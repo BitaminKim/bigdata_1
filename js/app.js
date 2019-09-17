@@ -30,7 +30,6 @@ $.fn.extend({
 var DEBUG = true;
 //var website = location.protocol + "//"+location.hostname
 //if(location.port) website += ":"+location.port;
-var website = 'https://bigdata.woodcloud.com';
 var apiurl = website + '/api';
 var galleryurl = website + '/gallery';
 var apikey = "ff238a2833cc473f18c49fdb3c26180e";
