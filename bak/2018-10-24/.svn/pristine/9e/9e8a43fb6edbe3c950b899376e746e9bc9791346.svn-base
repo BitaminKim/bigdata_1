@@ -1,0 +1,260 @@
+var vm = new Vue({
+	el: '#app',
+	data () {
+		this.lineExtend = {
+	        series: {
+	          label: {
+	            normal: {
+	              show: true
+	            }
+	          }
+	        }
+	    }
+		this.chartLineSettings = {
+			stack: { '用户': ['访问用户', '下单用户'] },
+//      	area: true,//堆叠色
+//      	axisSite: { right: ['下单率'] },
+//	        yAxisType: ['KMB', 'percent'],
+//	        yAxisName: ['数值', '比率']
+//			dimension:'日期',//维度
+//			metrics:'访问用户'//指标
+		}
+		this.chartPieSettings = {
+			dimension:'name',//维度
+			metrics:'percent'//指标
+		}
+		
+		this.chartMapTitle = {//标题样式
+			text: '',
+			left: 'center',
+			textStyle:{
+				color:'white',
+				fontSize:16
+			}
+		}
+		
+		this.chartMapSettings = {
+			position: 'china',
+			dimension: 'name',
+        	metrics: ['name'],
+	        selectData: true,
+	        roam:true,
+	        selectedMode: 'multiple',
+	    }
+		this.chartMapEvents = {
+	        click: (v) => {
+	          this.cityName = v.name
+	        }
+	    }
+		
+	    return {
+	    	dateTime:null,
+	    	cityName:'',
+			acc_volum:null,
+			chartMapData: {
+	          columns: ['name','total'],
+	          rows: []
+			},
+			chartLineData: {//进库分析折线数据
+	    		columns: ['日期', '访问用户', '下单用户', '下单率'],
+		        rows: [
+		            { '日期': '', '访问用户': 0, '下单用户': 0, '下单率': 0 },
+		            { '日期': '1/1', '访问用户': 100, '下单用户': 1400, '下单率': 0.32 },
+		            { '日期': '1/2', '访问用户': 200, '下单用户': 1500, '下单率': 0.26 }
+	        	]
+			},
+	    	chartPieData: {
+	    		columns: ['name', 'percent'],
+		        rows: []
+		    }
+	    }
+	},
+	created: function() {
+		var vm = this;
+		vm.initData();
+	},
+	methods: {
+		afterLineConfig (options) {
+			console.log(options)
+			var legend = options.legend;//维度指标调整
+			var series = options.series;//对象调整  折线图
+			var xAxis = options.xAxis;//圆饼调整
+			var yAxis = options.yAxis;//圆饼调整
+			
+			legend.type = 'scroll';
+			legend.textStyle = {color:'#FFF'};//方块按钮文字颜色
+			xAxis.forEach(function (value) {  
+				value.axisLine = { lineStyle:{color:'#FFF'}};
+			}); 
+			yAxis.forEach(function (value) {  
+				value.axisLine = { lineStyle:{color:'#FFF'}};
+			});
+			
+			options.legend = legend;
+			return options;
+		},
+		afterPieConfig (options) {
+			var legend = options.legend;//维度指标调整
+			var series = options.series;//对象调整  圆饼
+			
+			legend.show = false;
+			legend.type = 'scroll';
+			legend.textStyle = {color:'#FFF'}//方块按钮文字颜色
+
+			series.forEach(function (value) {  
+				value.name = '用户数据';
+				value.radius = '40%';//大小
+				value.center = ['50%', '50%'];//位置
+				value.label = {//饼图图形上的文本标签
+                    normal:{
+                        show:true,
+//                      position:'inner', //标签的位置 inner饼内
+                        formatter:'{b}-{d}%',
+                        textStyle : {
+                            fontWeight : 300 ,
+                            fontSize : 16    //文字的字体大小
+                        }
+                    }
+				},
+				value.tooltip = {//饼图图形上的鼠标悬浮标签
+                	formatter:'{b}-{d}%',
+				}
+			});
+			
+			options.legend = legend;
+			options.series = series;
+			return options;
+		},
+		afterMapConfig:function(options){
+			var legend = options.legend;//维度指标调整
+			var series = options.series;//维度指标调整
+			
+			legend.show = false;
+			legend.type = 'scroll';
+			legend.textStyle = {color:'#FFF'}//方块按钮文字颜色
+			
+			series.forEach(function (value) {
+				value.itemStyle = {//背景颜色等样式
+					normal: {//未选中状态
+//	                    borderWidth:2,//边框大小
+//	                    borderColor:'lightgreen',//边框颜色
+	                    areaColor: '#bbbbbb',//多边形块状区域颜色
+	                    label: {//标签文字
+	                        show: true,//显示名称
+	                        textStyle: {
+	                            color: '#fff'
+	                        }
+	                    }
+	                },
+	                emphasis: {// 选中样式
+	                    borderWidth:1,
+	                    borderColor:'#fff',//边框颜色
+	                    areaColor: 'red',//多边形块状区域颜色
+	                    label: {//标签文字
+	                        show: true,
+	                        textStyle: {
+	                            color: '#fff'
+	                        }
+	                    }
+	                } 
+				},
+				value.tooltip = {//饼图图形上的鼠标悬浮标签
+                	formatter:'{b}',
+				}
+			});
+			
+			options.legend = legend;
+			return options;
+		},
+		interval: function(options) {
+			$.each(options, function(key, value) {
+				setInterval(value.exec, value.time);
+			});
+		},
+		initData: function() {
+			this.AccVolum();
+			this.WarehouseDist();
+			this.GetUser();
+			this.interval({//定时任务
+				refreshDateTime: {//每秒刷新时间
+					exec: this.refreshDateTime,
+					time: 1000
+				},
+				WarehouseDist: {//每分钟刷新接口
+					exec: this.WarehouseDist,
+					time: 60*1000*60*12
+				},
+				AccVolum: {//每分钟刷新接口
+					exec: this.AccVolum,
+					time: 60*1000*2
+				},
+				GetUser: {//每分钟刷新接口
+					exec: this.GetUser,
+					time: 60*1000*60*12
+				}
+			})
+		},
+		refreshDateTime:function(){
+			this.dateTime = Date.now();
+		},
+		WarehouseDist: function() {
+			var vm = this;
+			index2Module.WarehouseDist({}, function(res) {
+				$.each(res.list,function(key,value){
+					value.name = String(value.name).replace("省",""); 
+				})
+				vm.chartMapData.rows = res.list;
+				vm.chartMapTitle.text = res.title;
+			});
+		},
+		GetUser: function() {
+			var vm = this;
+			index2Module.GetUser({}, function(res) {
+				var result = [];
+				$.each(res,function(key,value){
+					result.push({name:value.title,percent:value.percent});
+				});
+				vm.chartPieData.rows = result;
+				console.log(vm.chartPieData.rows	)
+			});
+		},
+		AccVolum: function(){
+			var vm = this;
+			index2Module.AccVolum({}, function(res) {
+				$.each(res,function(key,value){
+					res[key] = String(parseInt(value));
+				})
+				vm.acc_volum = res;
+			});
+		}
+	},
+	filters:{
+		animateNumbak: function(value,e){//暂时作废
+			console.log(value)
+			console.log(e)
+			obj.animate({
+				backgroundPosition: '(0 ' + String(-parseInt(value) * 58) + 'px)'
+			}, 'slow', 'swing', function() {});
+		},
+		userInfoProportion: function(value, all_count) {
+			var vm = this;
+			if(!value) return '';
+			value = parseInt(value);
+			return((value / all_count) * 100).toFixed(2);
+		}
+	},
+	watch: {
+	    acc_volum: function (val) {
+	    	var vm = this;
+		    $.each(val,function(key,value){
+		      	$.each(vm.$refs[String(key)],function(index,item){//渲染数字动画效果
+		      		var num = String(value).charAt(index);
+		      		var y = -parseInt(num) * 58;
+		      		$(item).animate({
+						backgroundPosition: '(0 ' + String(y) + 'px)'
+					}, 'slow', 'swing', function() {});
+		    	});
+		    });
+	    }
+	}
+});

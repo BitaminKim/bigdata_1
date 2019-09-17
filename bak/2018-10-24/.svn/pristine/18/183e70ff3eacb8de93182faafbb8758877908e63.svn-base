@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)http://www.17sucai.com/preview/690637/2018-07-12/ll/index.html -->
+<html lang="en" style="font-size: 79.375px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <script type="text/javascript" src="js/rem.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>木材云智慧物流大数据</title> 
+</head>
+
+<body style="visibility:visible;">
+
+	
+    <div class="container-flex contain2" tabindex="0" hidefocus="true">
+    
+    	<div class="header">
+            <div class="bg_header">
+                <div class="header_nav fl t_title">
+                    木材云智慧物流大数据
+                </div> 
+            </div>
+        </div>
+    
+        <div class="data_content2">
+            <div class="data_info">
+            	
+                <div class="info_2">
+                    <div class="text_2">
+                        <div class="fl"><img src="images/info2_4.png" alt="" class="fl"><div class="fl"><p>当年累计入库（方）</p><p>15802</p></div></div>
+                        <div class="fl"><img src="images/info2_5.png" alt="" class="fl"><div class="fl"><p>当年累计出库（方）</p><p>15802</p></div></div>
+                    </div>
+                </div>
+            
+                <div class="info_1">
+                    <div class="text_1">
+                        <div class="fl"><img src="images/info2_1.png" alt="" class="fl"><div class="fl"><p>当日入库量（方）</p><p>15802</p></div></div>
+                        <div class="fl"><img src="images/info2_2.png" alt="" class="fl"><div class="fl"><p>当日出库量（方）</p><p>15802</p></div></div>
+                        <div class="fl"><img src="images/info2_3.png" alt="" class="fl"><div class="fl"><p>当日在库量（方）</p><p>15802</p></div></div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    
+		<!-- 左侧区域 -->
+        <div class="box-left">
+         
+            <div class="left-center">
+                <div class="title-box">
+                    <h6>仓储趋势分析</h6>
+                </div>
+                <div class="chart-box piezhuz">
+                    <div id="chart3" style="width: 100%; height:90%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;" _echarts_instance_="ec_1538013434342"></div>
+     			</div>
+     		</div>
+
+        </div>
+        
+        
+        <!-- 中间区域 -->
+        <div class="box-center">
+            
+            <div class="left-center">
+                <div class="title-box">
+                    <h6>出库折线分析</h6>
+                </div>
+                <div class="chart-box piezhuz">
+                    <div id="chart4" style="width:80%; height:90%; margin:0px auto;"></div>
+     			</div>
+     		</div>
+            
+            <div class="left-center left-center2">
+                <div class="title-box">
+                    <h6>出库品名饼型分析</h6>
+                </div>
+                <div class="chart-box piezhuz">
+                    <div id="pie" style="width:70%; height:70%; margin:0px auto;"></div>
+     			</div>
+     		</div>
+            
+        </div>
+        
+        <!-- 右侧区域 -->
+        <div class="box-right">
+        
+            <div class="right-top">
+                <div class="title-box">
+                    <h6 id="barTitle">入库折线分析</h6>
+                </div>
+                <div class="chart-box piezhuz">
+                   <div id="gdMap" style="width:70%; height:70%; margin:0px auto;"></div>
+                </div>
+            </div>
+            
+            <div class="right-top right-top2">
+                <div class="title-box">
+                    <h6 id="barTitle">入库品名饼型分析</h6>
+                </div>
+                <div class="chart-box piezhuz">
+                   <div id="pie1" style="width:70%; height:70%; margin:0px auto;"></div>
+                </div>
+            </div>
+            
+            <div class="right-bottom" style="display:none;">
+                <div class="title-box">
+                    <p id="switchBtn">其他数据</p>
+                </div>
+                <div class="data-box">
+                	
+                    <div id="pie1">21212</div>
+                    <div id="gdMaps"></div>
+                    <div id="chart4s"></div>
+                    <div id="chart3s"></div>
+                    <div class="time-box" id="timeBox">
+                        <input class="time-input" type="text" value="" id="startTime">
+                        <input class="time-input" type="text" value="" id="endTime">
+                    </div>
+                    <div class="time-box" id="timeBoxs">
+                       <input class="time-input" type="text" value="" id="startTimes">
+                       <input class="time-input" type="text" value="" id="endTimes">
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+        
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript" src="js/laydate.js"></script>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script type="text/javascript" src="js/china.js"></script>
+<script type="text/javascript" src="js/guangdong.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript">
+    $('document').ready(function () {
+        $("body").css('visibility', 'visible');
+        var localData = [$('#teacher').val(), $('#start').val() + '/' + $('#end').val(), $('#leader').val()]
+        localStorage.setItem("data", localData);
+        $('#conBtn').on('click', function () {
+            localData = [$('#teacher').val(), $('#start').val() + '/' + $('#end').val(), $('#leader').val()]
+            if (typeof (Storage) !== "undefined") {
+                localStorage.setItem("data", localData);
+                var arr = localStorage.getItem("data").split(',');
+                $('#name_a').html(arr[0]);
+                $('#date_a').html(arr[1]);
+                $('#lea_a').html(arr[2]);
+            }
+        })
+        $('#fangda').on('click', function () {
+            if ($(this).siblings('ul').is(":hidden")) {
+                $(this).addClass('active').siblings('ul').show();
+            } else {
+                $(this).removeClass('active').siblings('ul').hide();
+            }
+        })
+
+        $('.modal-btn>li').on('click', function () {
+            var index = $(this).index();
+            if (index <= 2) {
+                $('.container').attr('style', 'visibility: visible').find('.pop-up').eq(index).attr('style', 'visibility: visible').siblings().attr('style', 'visibility: hidden');
+            } else if (index > 2 && index < 5) {
+                $('.container').attr('style', 'visibility: visible').find('.pop-up').eq(3).attr('style', 'visibility: visible').siblings().attr('style', 'visibility: hidden');
+                if (index != 3) {
+                    $('.pop-data .ranking-box').hide();
+                } else {
+                    $('.pop-data .ranking-box').show();
+                }
+                $('.cont-div').eq(index - 3).attr('style', 'visibility: visible').siblings('.cont-div').attr('style', 'visibility: hidden');
+            } else if (index == 5) {
+                $('.container').attr('style', 'visibility: visible').find('.pop-up').eq(3).attr('style', 'visibility: visible').siblings().attr('style', 'visibility: hidden');
+                $('.pop-data .ranking-box').hide();
+                if ($('#switchBtn').find('.active').data('datatype') == "income") {
+                    $('#titles').html('收入数据');
+                    $('#totalProfits').html('123,456.5元');
+                    $('.cont-div').eq(2).attr('style', 'visibility: visible').siblings('.cont-div').attr('style', 'visibility: hidden');
+                } else if ($('#switchBtn').find('.active').data('datatype') == 'expend') {
+                    $('#titles').html('支出数据');
+                    $('#totalProfits').html('32,111.4元');
+                    $('.cont-div').eq(2).attr('style', 'visibility: visible').siblings('div').attr('style', 'visibility: hidden');
+                }
+            }
+        })
+    })
+</script>
+
+
+
+</body></html>

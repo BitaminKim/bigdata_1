@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 79.375px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="css/style.css">
+    <title>木材云智慧物流大数据</title> 
+</head>
+
+<body style="visibility: visible;">
+	<div id="app" v-cloak>
+		<!-- 左侧区域 -->
+	    <div class="container-flex" tabindex="0" hidefocus="true">
+	        <div class="box-left">
+	        
+	            <div class="left-top">
+	                <div class="current-num">
+	                    <div>平台车量</div>
+	                    <p>123,456,789</p>
+	                </div>
+	            </div>
+	            
+	            <div class="left-center">
+	                <div class="title-box">
+	                    <h6>在途车辆</h6>
+	                </div>
+	                <div class="chart-box pie-chart">
+	                    <dl class="ztnull">
+	                    	<dt><img src="images/info_1.png"></dt>
+	                        <dd>100,000</dd>
+	                   	</dl>
+	     			</div>
+	     		</div>
+	            
+	            
+	            <div class="left-bottom">
+	                <div class="title-box">
+	                    <h6>配送：件数、方量</h6>
+	                </div>
+	                <div class="chart-box checrsl">
+	                    
+	                    <div id="gdMap"></div>
+	                    <div id="pie"></div>
+	                    <div class="checrsl_con">
+	                    	<div class="checrsl_kk">
+	                            <dl>
+	                                <dd>15802<span>（件）</span></dd>
+	                            </dl>
+	                            <dl style="background-image:url(images/info_fl.png);">
+	                                <dd>15802<span>（立方米）</span></dd>
+	                            </dl>
+	                        </div>
+	                    </div>
+	                    
+	                    
+	                </div>
+	                
+	            </div>
+	        </div>
+	        
+	        
+	        <!-- 中间区域 -->
+	        <div class="box-center">
+	            <div class="center-top">
+	                <h1>木材云智慧物流大数据</h1>
+	            </div>
+	            <div class="center-center">
+	                <div class="weather-box">
+	                    <div class="data">
+	                        <p class="time" id="time">{{dateTime | formatDate("hh:mm:ss")}}</p>
+	                        <p id="date"><span>{{dateTime | formatDate("yyyy-MM-dd")}}</span><span>{{dateTime | formatDate("pp")}}</span><span>{{dateTime | formatDate("ww")}}</span></p>
+	                    </div>
+	                    <div class="weather">
+	                        <img id="weatherImg" src="images/weather_img01.png" alt="">
+	                        <div id="weather">
+	                            <p class="active">多云</p>
+	                            <p>0-30℃</p>
+	                            <p>上海市徐汇区</p>
+	                        </div>
+	                    </div>
+	                </div>
+	                <img src="images/line_bg.png" alt="">
+	                <div class="select-box">
+	                    <span>系统分布</span>
+	                </div>
+	            </div>
+	            
+	            <div class="center-bottom">
+	                <div class="chart-box">
+	                    <div id="chart4" style="width: 100%; height: 95%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;" _echarts_instance_="ec_1538013434344"><div style="position: relative; overflow: hidden; width: 604px; height: 604px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="604" height="604" style="position: absolute; left: 0px; top: 0px; width: 604px; height: 604px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas><canvas data-zr-dom-id="zr_2" width="604" height="604" style="position: absolute; left: 0px; top: 0px; width: 604px; height: 604px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div></div></div>
+	                </div>
+	            </div>
+	
+	        </div>
+	        
+	        
+	        
+	        <!-- 右侧区域 -->
+	        <div class="box-right">
+	        
+	            <div class="right-top">
+	                <div class="title-box">
+	                    <h6 id="barTitle">用户数据</h6>
+	                </div>
+	                <!--<div class="chart-box" style="">
+	                    <div id="chart3" style="width: 100%; height: 100%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;" _echarts_instance_="ec_1538013434342"><div style="position: relative; overflow: hidden; width: 384px; height: 282px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas data-zr-dom-id="zr_0" width="384" height="282" style="position: absolute; left: 0px; top: 0px; width: 384px; height: 282px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div style="display: none;"></div><div style="display: none;"></div><div style="position: absolute; display: none; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s, top 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s; background-color: rgba(50, 50, 50, 0.7); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font: 14px/21px &quot;Microsoft YaHei&quot;; padding: 5px; left: 131px; top: 235px;">入库件<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#0e94eb;"></span>入库件: 584</div></div>
+	                </div>-->
+	                <div class="chart-box pie-chart">
+	                    <div id="pie" _echarts_instance_="ec_1538013434338" style="-webkit-tap-highlight-color: transparent; user-select: none; position: relative;">
+	                    	<div style="position: relative; overflow: hidden; width: 192px; height: 289px; padding: 0px; margin: 0px; border-width: 0px;">
+	                    		<canvas data-zr-dom-id="zr_0" width="192" height="289" style="position: absolute; left: 0px; top: 0px; width: 192px; height: 289px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
+	                    	</div>
+	                    	<div>
+	                    		
+	                    	</div>
+	                    </div>
+	                    <div>
+	                        <div class="pie-data">
+		                        <p>
+		                        	<span>
+		                        		<i class="legend" style="background:#0e94eb"></i>
+		                        	</span>顺丰
+		                        	<span class="pie-number" style="color:#0e94eb">
+		                        		192581
+		                        	</span>
+		                        	30.87%
+		                        </p>
+		                        <p>
+		                        	<span>
+		                        		<i class="legend" style="background:#c440ef"></i>
+		                        	</span>京东
+		                        	<span class="pie-number" style="color:#c440ef">
+		                        		215635
+		                        	</span>
+		                        	34.08%
+		                        </p>
+		                        <p>
+		                        	<span>
+		                        		<i class="legend" style="background:#efb013"></i>
+		                        	</span>EMS
+		                        	<span class="pie-number" style="color:#efb013">
+		                        		224585
+		                        	</span>35.49%
+		                        </p>
+	                        </div>
+	                    </div>
+	                </div>
+            	</div>
+	            <div class="right-center">
+	                <div class="data-box data_content">
+	                    
+	                    <div class="bottom_3 fl">
+	                        <div class="main_title">
+	                            <img src="images/title_6.png" alt="">
+	                            用户数据信息比列
+	                        </div>
+	                        <div class="main_table">
+	                            <table>
+	                                <thead>
+	                                	<tr><th>用户类型</th><th>用户比列</th></tr>
+	                                </thead>
+	                                <tbody>
+	                                	<tr><td>{{Member_num.cangchu_count.name}}</td><td>{{Member_num.cangchu_count.value | userInfoProportion(Member_num.all_count)}}%</td></tr>
+	                                	<tr><td>{{Member_num.huozhu_count.name}}</td><td>{{Member_num.huozhu_count.value | userInfoProportion(Member_num.all_count)}}%</td></tr>
+	                                    <tr><td>{{Member_num.kaizheng_count.name}}</td><td>{{Member_num.kaizheng_count.value | userInfoProportion(Member_num.all_count)}}%</td></tr>
+	                                    <tr><td>{{Member_num.siji_count.name}}</td><td>{{Member_num.siji_count.value | userInfoProportion(Member_num.all_count)}}%</td></tr>
+	                                </tbody>
+	                            </table>
+	                        </div>
+	                    </div>
+	                    
+	                    
+	                </div>
+	            </div>
+	            
+	            <div class="right-bottom" style="display:none;">
+	                <div class="title-box">
+	                    <p id="switchBtn">其他数据</p>
+	                </div>
+	                <div class="data-box">
+	                    <div id="pie1">21212</div>
+	                    <div id="gdMaps"></div>
+	                    <div id="chart4s"></div>
+	                    <div id="chart3s"></div>
+	                    <div class="time-box" id="timeBox">
+	                        <input class="time-input" type="text" value="" id="startTime">
+	                        <input class="time-input" type="text" value="" id="endTime">
+	                    </div>
+	                    <div class="time-box" id="timeBoxs">
+	                       <input class="time-input" type="text" value="" id="startTimes">
+	                       <input class="time-input" type="text" value="" id="endTimes">
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+    </div>
+</body>
+
+<!--
+	作者：bitamin.kim@gmail.com
+	时间：2018-09-27
+	描述：lib
+-->
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/rem.js"></script>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript" src="js/laydate.js"></script>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script type="text/javascript" src="js/china.js"></script>
+<script type="text/javascript" src="js/guangdong.js"></script>
+<!--<script type="text/javascript" src="js/base.js"></script>-->
+<script type="text/javascript" src="js/vue.min.js"></script>
+
+<!--
+	作者：bitamin.kim@gmail.com
+	时间：2018-09-27
+	描述：controller
+-->
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/Modules/indexModule.js"></script>
+<script type="text/javascript" src="js/controllers/indexController.js"></script>
+</html>

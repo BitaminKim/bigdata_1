@@ -1,0 +1,19 @@
+var index2Module = (function(mod){
+	mod.AccVolum = function(post, callback) {
+		sw_get("/Chart/AccVolum", post, function(res){
+			return callback(res.data);
+		});
+	}
+	mod.GetUser = function(post, callback) {
+		sw_post("/Chart/User", post, function(res){
+			return callback(res.data);
+		});
+	}
+	mod.WarehouseDist = function(post, callback) {
+		sw_post("/Chart/WarehouseDist", post, function(res){
+			return callback(res.data);
+		});
+	}
+	
+	return mod;
+})(window.index2Module || {});

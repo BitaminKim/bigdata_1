@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)http://www.17sucai.com/preview/690637/2018-07-12/ll/index.html -->
+<html lang="en" style="font-size: 79.375px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <script type="text/javascript" src="js/rem.js"></script>
+    <link rel="stylesheet" href="images/style.css">
+    <title>木材云智慧物流大数据</title> 
+</head>
+
+<body style="visibility: visible;">
+
+	<!-- 左侧区域 -->
+    <div class="container-flex" tabindex="0" hidefocus="true">
+        <div class="box-left">
+        
+            <div class="left-top">
+                <div class="current-num">
+                    <div>平台车量</div>
+                    <p>123,456,789</p>
+                </div>
+            </div>
+            
+            <div class="left-center">
+                <div class="title-box">
+                    <h6>在途车辆</h6>
+                </div>
+                <div class="chart-box pie-chart">
+                    <dl class="ztnull">
+                    	<dt><img src="images/info_1.png"></dt>
+                        <dd>100,000</dd>
+                   	</dl>
+     			</div>
+     		</div>
+            
+            
+            <div class="left-bottom">
+                <div class="title-box">
+                    <h6>配送：件数、方量</h6>
+                </div>
+                <div class="chart-box checrsl">
+                    
+                    <div id="gdMap"></div>
+                    <div id="pie"></div>
+                    <div class="checrsl_con">
+                    	<div class="checrsl_kk">
+                            <dl>
+                                <dd>15802<span>（件）</span></dd>
+                            </dl>
+                            <dl style="background-image:url(images/info_fl.png);">
+                                <dd>15802<span>（立方米）</span></dd>
+                            </dl>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <!-- 中间区域 -->
+        <div class="box-center">
+            <div class="center-top">
+                <h1>木材云智慧物流大数据</h1>
+            </div>
+            <div class="center-center">
+                <div class="weather-box">
+                    <div class="data">
+                        <p class="time" id="time">10:09:29</p>
+                        <p id="date"><span>2018/9/27</span><span>am</span><span>周4</span></p>
+                    </div>
+                    <div class="weather">
+                        <img id="weatherImg" src="images/weather_img01.png" alt="">
+                        <div id="weather">
+                            <p class="active">多云</p>
+                            <p>16-22℃</p>
+                            <p>上海市徐汇区</p>
+                        </div>
+                    </div>
+                </div>
+                <img src="images/line_bg.png" alt="">
+                <div class="select-box">
+                    <span>系统分布</span>
+                </div>
+            </div>
+            
+            <div class="center-bottom">
+                <div class="chart-box">
+                    <div id="chart4" style="width: 100%; height: 95%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;" _echarts_instance_="ec_1538013434344"><div style="position: relative; overflow: hidden; width: 604px; height: 604px; padding: 0px; margin: 0px; border-width: 0px;"><canvas data-zr-dom-id="zr_0" width="604" height="604" style="position: absolute; left: 0px; top: 0px; width: 604px; height: 604px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas><canvas data-zr-dom-id="zr_2" width="604" height="604" style="position: absolute; left: 0px; top: 0px; width: 604px; height: 604px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div></div></div>
+                </div>
+            </div>
+
+        </div>
+        
+        
+        
+        <!-- 右侧区域 -->
+        <div class="box-right">
+        
+            <div class="right-top">
+                <div class="title-box">
+                    <h6 id="barTitle">用户数据</h6>
+                </div>
+                <div class="chart-box" style="">
+                    <div id="chart3" style="width: 100%; height: 100%; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;" _echarts_instance_="ec_1538013434342"><div style="position: relative; overflow: hidden; width: 384px; height: 282px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;"><canvas data-zr-dom-id="zr_0" width="384" height="282" style="position: absolute; left: 0px; top: 0px; width: 384px; height: 282px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas></div><div style="display: none;"></div><div style="display: none;"></div><div style="position: absolute; display: none; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s, top 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s; background-color: rgba(50, 50, 50, 0.7); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font: 14px/21px &quot;Microsoft YaHei&quot;; padding: 5px; left: 131px; top: 235px;">入库件<br><span style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#0e94eb;"></span>入库件: 584</div></div>
+                </div>
+            </div>
+            
+            <div class="right-center">
+                <div class="data-box data_content">
+                    
+                    <div class="bottom_3 fl">
+                        <div class="main_title">
+                            <img src="images/title_6.png" alt="">
+                            用户数据信息比列
+                        </div>
+                        <div class="main_table">
+                            <table>
+                                <thead>
+                                	<tr><th>用户类型</th><th>用户比列</th></tr>
+                                </thead>
+                                <tbody>
+                                	<tr><td>仓库</td><td>10%</td></tr>
+                                	<tr><td>货主</td><td>20%</td></tr>
+                                    <tr><td>开证公司</td><td>30%</td></tr>
+                                    <tr><td>司机</td><td>20%</td></tr>
+                                    <tr><td>仓储公司</td><td>20%</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            
+            <div class="right-bottom" style="display:none;">
+                <div class="title-box">
+                    <p id="switchBtn">其他数据</p>
+                </div>
+                <div class="data-box">
+                    <div id="pie1">21212</div>
+                    <div id="gdMaps"></div>
+                    <div id="chart4s"></div>
+                    <div id="chart3s"></div>
+                    <div class="time-box" id="timeBox">
+                        <input class="time-input" type="text" value="" id="startTime">
+                        <input class="time-input" type="text" value="" id="endTime">
+                    </div>
+                    <div class="time-box" id="timeBoxs">
+                       <input class="time-input" type="text" value="" id="startTimes">
+                       <input class="time-input" type="text" value="" id="endTimes">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+    
+        
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/layer.min.js"></script>
+<script type="text/javascript" src="js/laydate.js"></script>
+<script type="text/javascript" src="js/echarts.min.js"></script>
+<script type="text/javascript" src="js/china.js"></script>
+<script type="text/javascript" src="js/guangdong.js"></script>
+<script type="text/javascript" src="js/base.js"></script>
+<script type="text/javascript">
+    $('document').ready(function () {
+        $("body").css('visibility', 'visible');
+        var localData = [$('#teacher').val(), $('#start').val() + '/' + $('#end').val(), $('#leader').val()]
+        localStorage.setItem("data", localData);
+        $('#conBtn').on('click', function () {
+            localData = [$('#teacher').val(), $('#start').val() + '/' + $('#end').val(), $('#leader').val()]
+            if (typeof (Storage) !== "undefined") {
+                localStorage.setItem("data", localData);
+                var arr = localStorage.getItem("data").split(',');
+                $('#name_a').html(arr[0]);
+                $('#date_a').html(arr[1]);
+                $('#lea_a').html(arr[2]);
+            }
+        })
+        $('#fangda').on('click', function () {
+            if ($(this).siblings('ul').is(":hidden")) {
+                $(this).addClass('active').siblings('ul').show();
+            } else {
+                $(this).removeClass('active').siblings('ul').hide();
+            }
+        })
+
+        $('.modal-btn>li').on('click', function () {
+            var index = $(this).index();
+            if (index <= 2) {
+                $('.container').attr('style', 'visibility: visible').find('.pop-up').eq(index).attr('style', 'visibility: visible').siblings().attr('style', 'visibility: hidden');
+            } else if (index > 2 && index < 5) {
+                $('.container').attr('style', 'visibility: visible').find('.pop-up').eq(3).attr('style', 'visibility: visible').siblings().attr('style', 'visibility: hidden');
+                if (index != 3) {
+                    $('.pop-data .ranking-box').hide();
+                } else {
+                    $('.pop-data .ranking-box').show();
+                }
+                $('.cont-div').eq(index - 3).attr('style', 'visibility: visible').siblings('.cont-div').attr('style', 'visibility: hidden');
+            } else if (index == 5) {
+                $('.container').attr('style', 'visibility: visible').find('.pop-up').eq(3).attr('style', 'visibility: visible').siblings().attr('style', 'visibility: hidden');
+                $('.pop-data .ranking-box').hide();
+                if ($('#switchBtn').find('.active').data('datatype') == "income") {
+                    $('#titles').html('收入数据');
+                    $('#totalProfits').html('123,456.5元');
+                    $('.cont-div').eq(2).attr('style', 'visibility: visible').siblings('.cont-div').attr('style', 'visibility: hidden');
+                } else if ($('#switchBtn').find('.active').data('datatype') == 'expend') {
+                    $('#titles').html('支出数据');
+                    $('#totalProfits').html('32,111.4元');
+                    $('.cont-div').eq(2).attr('style', 'visibility: visible').siblings('div').attr('style', 'visibility: hidden');
+                }
+            }
+        })
+    })
+</script>
+
+
+
+</body></html>

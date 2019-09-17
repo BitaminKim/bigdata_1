@@ -1,0 +1,14 @@
+var indexModule = (function(mod){
+	mod.list = function(post, callback) {
+		sw_post("/shop/", post, function(data){
+			return callback(data);
+		});
+	}
+	mod.Member_num = function(post, callback) {
+		sw_post("/Map/Member_num", post, function(data){
+			return callback(data);
+		});
+	}
+	
+	return mod;
+})(window.indexModule || {});

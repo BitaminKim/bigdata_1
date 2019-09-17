@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 79.375px;">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/v-charts.min.css">
+    <title>木材云智慧物流大数据</title> 
+</head>
+<body style="visibility: visible;">
+
+	<div id="app" v-cloak>
+		<!-- 左侧区域 -->
+    	<div class="container-flex contain3" tabindex="0" hidefocus="true">
+	    	<div class="header">
+	            <div class="bg_header">
+	                <div class="header_nav fl t_title">木材云智慧物流大数据</div> 
+	            </div>
+	        </div>
+	    	<div class="data_content2">
+	            <div class="data_info">
+	                <dl class="info_2">
+	                    <dd>
+	                        <div class="dd1">
+	                            <h1>当年累计入库（方）</h1>
+	                            <!--<h2>{{acc_volum.year_in | formatThousand}}</h2>-->
+                        		<div class="animateNum">
+                        			<span class="t_num">
+                    					<i ref="year_in" v-for="item in acc_volum.year_in.length"></i>
+                        			</span>
+                        		</div>
+	                        </div>
+	                    </dd>
+	                    <dd style=" border-left:1px double #087EC6;">
+	                        <div class="dd2">
+	                            <h1>当年累计出库（方）</h1>
+	                            <!--<h2>{{acc_volum.year_out | formatThousand}}</h2>-->
+                        		<div class="animateNum">
+                        			<span class="t_num">
+                    					<i ref="year_out" v-for="item in acc_volum.year_out.length"></i>
+                        			</span>
+                        		</div>
+	                        </div>
+	                    </dd>
+	                </dl>
+	            
+	                <dl class="info_1">
+	                    <dd>
+	                        <div class="dd1">
+	                            <h1>当日入库量（方）</h1>
+	                            <!--<h2>{{acc_volum.day_in | formatThousand}}</h2>-->
+                        		<div class="animateNum">
+                        			<span class="t_num">
+                    					<i ref="day_in" v-for="item in acc_volum.day_in.length"></i>
+                        			</span>
+                        		</div>
+	                        </div>
+	                    </dd>
+	                    <dd style=" border-left:1px double #087EC6;">
+	                        <div class="dd2">
+	                            <h1>当日出库量（方）</h1>
+	                            <!--<h2>{{acc_volum.day_out | formatThousand}}</h2>-->
+                        		<div class="animateNum">
+                        			<span class="t_num">
+                    					<i ref="day_out" v-for="item in acc_volum.day_out.length"></i>
+                        			</span>
+                        		</div>
+	                        </div>
+	                    </dd>
+	                    <dd style=" border-left:1px double #087EC6;">
+	                        <div class="dd3">
+	                            <h1>当日在库量（方）</h1>
+	                            <!--<h2>{{acc_volum.day_stock | formatThousand}}</h2>-->
+                        		<div class="animateNum">
+                        			<span class="t_num">
+                    					<i ref="day_stock" v-for="item in acc_volum.day_stock.length"></i>
+                        			</span>
+                        		</div>
+	                        </div>
+	                    </dd>
+	                </dl>
+	                
+	            </div>
+	        </div>
+	        
+	        <!-- 中间区域 -->
+	        <div class="box-center box-center2">
+	            <div class="center-center">
+	                <div class="weather-box">
+	                    <div class="data">
+	                        <p class="time" id="time">{{dateTime | formatDate("hh:mm:ss")}}</p>
+	                        <p id="date"><span>{{dateTime | formatDate("yyyy-MM-dd")}}</span><span>{{dateTime | formatDate("pp")}}</span><span>{{dateTime | formatDate("ww")}}</span></p>
+	                    </div>
+	                    <div class="weather">
+	                        <img id="weatherImg" src="images/weather_img01.png" alt="">
+	                        <div id="weather">
+	                            <p class="active">多云</p>
+	                            <p>16-22℃</p>
+	                            <p>上海市徐汇区</p>
+	                        </div>
+	                    </div>
+	                </div>
+	                <img src="images/line_bg.png" alt="">
+	                <div class="select-box">
+	                    <span>系统分布</span>
+	                </div>
+	            </div>
+	            
+	            <div class="center-bottom">
+	            	<ve-map :data="chartMapData" :title="chartMapTitle" height="87%" width="100%" style="margin-top: 100px;" :settings="chartMapSettings" :events="chartMapEvents" :after-config="afterMapConfig">
+	            		<div v-show="chartMapData.rows.length == 0 " class="data-empty">没有数据😂</div>
+	            	</ve-map>
+	            </div>
+	
+	        </div>
+	       
+			<div class="box-left box-left2">
+	    
+	            <div id="gdMap"></div>
+	            <div id="pie"></div>
+	            
+	            <div class="left-center">
+	                <div class="title-box">
+	                    <h6>仓储趋势分析</h6>
+	                </div>
+	                <ve-line :data="chartLineData" height="90%" width="98%" style="margin-top: 10px;" :settings="chartLineSettings" :extend="lineExtend" :after-config="afterLineConfig">
+	                	<div v-show="chartLineData.rows.length == 0 " class="data-empty">没有数据😂</div>
+	                </ve-line>
+	     		</div>
+	    
+	        </div>
+	        
+	        <!-- 右侧区域 -->
+			<div class="rigconkk">
+	        	<div class="box-right box-right2">
+	        
+	            
+		            <div class="right-top">
+		                <div class="title-box">
+		                    <h6 id="barTitle">用户数据</h6>
+		                </div>
+		                <ve-pie :data="chartPieData" height="90%" width="100%" style="position: absolute;margin-top: 10px;" :settings="chartPieSettings" :after-config="afterPieConfig">
+		                	<div v-show="chartPieData.rows.length == 0 " class="data-empty">没有数据😂</div>
+		                </ve-pie>
+		            </div>
+	
+		            <div class="right-bottom" style="display:none;">
+		                <div class="title-box">
+		                    <p id="switchBtn">其他数据</p>
+		                </div>
+		                <div class="data-box">
+		                    <div id="pie1">21212</div>
+		                    <div id="gdMaps"></div>
+		                    <div id="chart4s"></div>
+		                    <div id="chart3s"></div>
+		                    <div class="time-box" id="timeBox">
+		                        <input class="time-input" type="text" value="" id="startTime">
+		                        <input class="time-input" type="text" value="" id="endTime">
+		                    </div>
+		                    <div class="time-box" id="timeBoxs">
+		                       <input class="time-input" type="text" value="" id="startTimes">
+		                       <input class="time-input" type="text" value="" id="endTimes">
+		                    </div>
+		                </div>
+		            </div>
+	            
+	        	</div>
+	    	</div>
+	    
+			<div class="sxan_left"><a href="index.html"><img src="images/about_jt_left.png"></a></div> 
+		</div>  
+	</div>
+</body>
+
+<!--
+	作者：bitamin.kim@gmail.com
+	时间：2018-09-27
+	描述：lib
+-->
+
+<script type="text/javascript" src="js/lib/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/lib/rem.js"></script>
+<script type="text/javascript" src="js/lib/numeral.js"></script>
+<script type="text/javascript" src="js/lib/digitalScroll.js"></script>
+<script type="text/javascript" src="js/lib/vue.min.js"></script>
+<script type="text/javascript" src="js/lib/echarts.min.js"></script>
+<script type="text/javascript" src="js/lib/v-charts.min.js"></script>
+<script type="text/javascript" src="js/lib/rowcol.js"></script>
+
+<!--
+	作者：bitamin.kim@gmail.com
+	时间：2018-09-27
+	描述：controller
+-->
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/Modules/index2Module.js"></script>
+<script type="text/javascript" src="js/controllers/index2Controller.js"></script>
+
+</html>

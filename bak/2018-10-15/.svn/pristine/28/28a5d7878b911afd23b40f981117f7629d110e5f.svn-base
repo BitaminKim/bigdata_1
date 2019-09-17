@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)http://www.17sucai.com/preview/690637/2018-07-12/ll/index.html -->
+<html lang="en" style="font-size: 79.375px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="css/style.css">
+    <title>木材云智慧物流大数据</title> 
+</head>
+
+<body style="visibility:visible;">
+
+	<div id="app" v-cloak>
+	    <div class="container-flex contain2" tabindex="0" hidefocus="true">
+	    
+	    	<div class="header">
+	            <div class="bg_header">
+	                <div class="header_nav fl t_title">
+	                    木材云智慧物流大数据
+	                </div> 
+	            </div>
+	        </div>
+	    
+	        <div class="data_content2">
+	            <div class="data_info">
+	                <div class="info_2">
+	                    <div class="text_2">
+	                        <div class="fl">
+	                        	<img src="images/info2_4.png" alt="" class="fl">
+	                        	<div class="fl">
+	                        		<p>当年累计入库（方）</p>
+	                        		<p>{{acc_volum.year_in | formatThousand}}</p>
+	                        		<div class="animateNum">
+	                        			<span class="t_num">
+                        					<i ref="year_in" v-for="item in acc_volum.year_in.length"></i>
+	                        			</span>
+	                        		</div>
+	                        	</div>
+	                        </div>
+	                        <div class="fl">
+	                        	<img src="images/info2_5.png" alt="" class="fl">
+	                        	<div class="fl">
+	                        		<p>当年累计出库（方）</p>
+	                        		<p>{{acc_volum.year_out | formatThousand}}</p>
+	                        		<div class="animateNum">
+	                        			<span class="t_num">
+                        					<i ref="year_out" v-for="item in acc_volum.year_out.length"></i>
+	                        			</span>
+	                        		</div>
+	                        	</div>
+	                        </div>
+	                    </div>
+	                </div>
+	            
+	                <div class="info_1">
+	                    <div class="text_1">
+	                        <div class="fl">
+	                        	<img src="images/info2_1.png" alt="" class="fl">
+	                        	<div class="fl">
+	                        		<p>当日入库量（方）</p>
+	                        		<p>{{acc_volum.day_in | formatThousand}}</p>
+	                        		<div class="animateNum">
+	                        			<span class="t_num">
+                        					<i ref="day_in" v-for="item in acc_volum.day_in.length"></i>
+	                        			</span>
+	                        		</div>
+	                        	</div>
+	                        </div>
+	                        
+	                        <div class="fl">
+	                        	<img src="images/info2_2.png" alt="" class="fl">
+	                        	<div class="fl">
+	                        		<p>当日出库量（方）</p>
+	                        		<p>{{acc_volum.day_out | formatThousand}}</p>
+	                        		<div class="animateNum">
+	                        			<span class="t_num">
+                        					<i ref="day_out" v-for="item in acc_volum.day_out.length"></i>
+	                        			</span>
+	                        		</div>
+	                        	</div>
+	                        </div>
+	                        
+	                        <div class="fl">
+	                        	<img src="images/info2_3.png" alt="" class="fl">
+	                        	<div class="fl">
+	                        		<p>当日在库量（方）</p>
+	                        		<p>{{acc_volum.day_stock | formatThousand}}</p>
+	                        		<div class="animateNum">
+	                        			<span class="t_num">
+                        					<i ref="day_stock" v-for="item in acc_volum.day_stock.length"></i>
+	                        			</span>
+	                        		</div>
+	                        	</div>
+	                        </div>
+	                    </div>
+	                </div>
+	                
+	            </div>
+	        </div>
+	    
+			<!-- 左侧区域 -->
+	        <div class="box-left">
+	         
+	            <div class="left-center">
+	                <div class="title-box">
+	                    <h6>仓储趋势分析</h6>
+	                </div>
+	                <ve-line :data="chartLine1Data" height="95%" width="98%" style="margin-top: 20px;" :settings="chartLineSettings" :extend="lineExtend" :after-config="afterLineConfig"></ve-line>
+	     		</div>
+	
+	        </div>
+	        
+	        
+	        <!-- 中间区域 -->
+	        <div class="box-center">
+	            
+	            <div class="left-center">
+	                <div class="title-box">
+	                    <h6>出库折线分析</h6>
+	                </div>
+	                <ve-line :data="chartLine1Data" height="95%" width="98%" style="margin-top: 20px;" :settings="chartLineSettings" :extend="lineExtend" :after-config="afterLineConfig"></ve-line>
+	     		</div>
+	            
+	            <div class="left-center left-center2">
+	                <div class="title-box">
+	                    <h6>出库品名饼型分析</h6>
+	                </div>
+	                <ve-pie :data="chartPieData" height="85%" width="90%" style="position: absolute;margin-left: 50px;margin-top: 20px;" :settings="chartPieSettings" :after-config="afterPieConfig"></ve-pie>
+	     		</div>
+	            
+	        </div>
+	        
+	        <!-- 右侧区域 -->
+	        <div class="box-right">
+	        
+	            <div class="right-top">
+	                <div class="title-box">
+	                    <h6 id="barTitle">入库折线分析</h6>
+	                </div>
+	                <ve-line :data="chartLine2Data" height="95%" width="98%" style="margin-top: 20px;"  :settings="chartLineSettings" :extend="lineExtend" :after-config="afterLineConfig"></ve-line>
+	            </div>
+	            
+	            <div class="right-top right-top2">
+	                <div class="title-box">
+	                    <h6 id="barTitle">入库品名饼型分析</h6>
+	                </div>
+	                <ve-pie :data="chartPieData" height="85%" width="90%" style="position: absolute;margin-left: 50px;margin-top: 20px;" :settings="chartPieSettings" :after-config="afterPieConfig"></ve-pie>
+	            </div>
+	            
+	            <div class="right-bottom" style="display:none;">
+	                <div class="title-box">
+	                    <p id="switchBtn">其他数据</p>
+	                </div>
+	                <div class="data-box">
+	                	
+	                    <div id="pie1">21212</div>
+	                    <div id="gdMaps"></div>
+	                    <div id="chart4s"></div>
+	                    <div id="chart3s"></div>
+	                    <div class="time-box" id="timeBox">
+	                        <input class="time-input" type="text" value="" id="startTime">
+	                        <input class="time-input" type="text" value="" id="endTime">
+	                    </div>
+	                    <div class="time-box" id="timeBoxs">
+	                       <input class="time-input" type="text" value="" id="startTimes">
+	                       <input class="time-input" type="text" value="" id="endTimes">
+	                    </div>
+	                    
+	                </div>
+	            </div>
+	            
+	        </div>
+	        
+	    </div>
+    </div>
+
+</body>
+        
+
+<script type="text/javascript" src="js/lib/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/lib/rem.js"></script>
+<script type="text/javascript" src="js/lib/numeral.js"></script>
+<script type="text/javascript" src="js/lib/digitalScroll.js"></script>
+<script type="text/javascript" src="js/lib/vue.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/v-charts/lib/index.min.js"></script>
+<!--
+	作者：bitamin.kim@gmail.com
+	时间：2018-09-27
+	描述：controller
+-->
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/Modules/index2Module.js"></script>
+<script type="text/javascript" src="js/controllers/index2Controller.js"></script>
+
+
+
+</html>
